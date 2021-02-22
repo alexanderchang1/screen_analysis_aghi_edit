@@ -1,0 +1,33 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Unknown </title></head><body>
+<h1 id="screenprocessing">ScreenProcessing</h1>
+<h2 id="there-are-two-steps-to-analyzing-sequencing-data-from-pooled-screens-using-the-screenprocessing-pipeline">There are two steps to analyzing sequencing data from pooled screens using the ScreenProcessing pipeline</h2>
+<ol>
+<li>
+<p>Convert raw sequencing files into library counts using bowtie alignment</p>
+<p>The script used for this step is <strong>fastqgz_to_counts.py</strong>, and requires a reference fasta file of the library used in the
+experiment. Indices for several published libraries are included here, and more can be generated upon request.
+<p>
+2. Generate sgRNA phenotype scores, gene-level scores, and gene-level p-values</p>
+<p>This step relies on the script <strong>process_experiments.py</strong>. This script requires you to first fill out a configuration file which allows you to:
+<em> Assign the read counts generated for each sequencing file to the appropriate sample condition
+</em> Specify which conditions you want to compare in order to generate phenotypes
+<em> Set several data quality filtering and normalization parameters
+</em> Specify how to score genes</p>
+<p>This script also generates a set of standard graphs using <strong>screen_analysis.py</strong></p>
+</li>
+<li>
+<p>[Optional] Generate graphs interactively using <strong>screen_analysis.py</strong></p>
+</li>
+</ol>
+<h3 id="dependencies">Dependencies</h3>
+<ul>
+<li>Python v3 (tested in 3.7; legacy scripts for v2.7 are available in the python2 folder)</li>
+<li>Biopython</li>
+<li>Scipy/Numpy/Pandas/Matplotlib</li>
+<li>iPython or iPython Notebook recommended for interactive graph plotting</li>
+</ul>
+<p>(ScreenProcessing no longer uses Bowtie to align sequencing reads; if you want to use or fork from this functionality use an earlier version of the program)</p>
+<h1 id="screenprocessing-demo">ScreenProcessing Demo</h1>
+<p>A PDF slideshow with a step-by-step tutorial of screen analysis using the data files included in the Demo folder can found here: <a href="ScreenProcessing_tutorial.pdf">ScreenProcessing Demo</a></p>
+<p><em>The demo files represent a tiny slice of the full sequencing dataset to speed up the download and demo scripts. The full complement of sequencing data used for the cell growth and cholera toxin sensitivity CRISPRi screens published in Gilbert and Horlbeck et al., Cell 2014 can be accessed here:</em> <a href="https://ucsf.box.com/s/gq1lsrrl1eaz9ur0j5zc6ww2ebfx24zn">data link</a></p>
+</body></html>
